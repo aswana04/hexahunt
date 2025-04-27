@@ -1,0 +1,133 @@
+/* Full-page background */
+body {
+    font-family: 'Exo', sans-serif;
+    background-color: #d28f8f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Centered container */
+.about-us-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Logo Styling */
+.hexcent-logo {
+    width: 120px; /* Adjust logo size */
+    height: auto;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Main Content Box */
+.content {
+    padding: 30px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3); /* Subtle dark box */
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    animation: slideUp 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Title */
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;  /* Move the heading down slightly */
+    color: aliceblue;
+}
+
+/* Description */
+.description {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    margin-top: 10px; /* Space between title and description */
+    line-height: 1.5;
+}
+
+/* CTA Button */
+.cta-button {
+    background-color: #000000;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    margin-top: 20px; /* Move the button down a bit more */
+}
+
+.cta-button:hover {
+    background-color: #9a7c7c;
+    transform: scale(1.05);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    .content {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,96 @@
+/* Ensure the container is scrollable */
+.overview-wrapper {
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+    display:block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-y: auto; /* Allow scrolling */
+    padding: 20px;
+  }
+  
+  .overview-dashboard {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .job-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+  }
+  
+  .job-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 50px 25px;
+    border-radius: 18px;
+    margin-top: 40px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transform: translateY(10px);
+    animation: slideUp 0.6s ease forwards;
+  }
+  
+  .job-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .job-card h3 {
+    font-size: 22px;
+    margin: 0;
+    color: #f9c3d1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .job-card p {
+    font-size: 16px;
+    color: #dcdcdc;
+    line-height: 1.5;
+  }
+  
+  .job-card .icon {
+    color: #f9c3d1;
+    font-size: 24px;
+  }
+  .back-button {
+    background-color: #c9728a;
+    color: #0f0f0f;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #f7b3bf;
+  }
+  
+  
+  /* Add a smooth scroll behavior */
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }

@@ -1,0 +1,12 @@
+java
+html
+css
+javascript
+linux
+git
+ai
+cloud computing
+php
+c
+graphic design
+go

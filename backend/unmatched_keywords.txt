@@ -1,0 +1,7 @@
+react
+node.js
+c++
+aws
+machine learning
+docker
+kubernetes

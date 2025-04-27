@@ -1,0 +1,79 @@
+[
+  {
+    'Job Number': 7,
+    'Title': 'JavaScript Developer',
+    'Company': 'SEVEN CONSULTANCY',
+    'Skills': 'javascript developer, css, xml, javascript',
+    'Link': 'https://www.timesjobs.com/job-detail/javascript-developer-seven-consultancy-mumbai-2-to-5-yrs-jobid-aq4S4YRKyyBzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 10,
+    'Title': 'Javascript Developer',
+    'Company': 'ucg esolutions llp',
+    'Skills': 'node.js, microsoft technologies, javascript',
+    'Link': 'https://www.timesjobs.com/job-detail/javascript-developer-ucg-esolutions-llp-mumbai-0-to-3-yrs-jobid-FfuX7g9RnaRzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 11,
+    'Title': 'Javascript Developer',
+    'Company': 'ucg esolutions llp',
+    'Skills': 'node.js, microsoft technologies, javascript',
+    'Link': 'https://www.timesjobs.com/job-detail/javascript-developer-ucg-esolutions-llp-mumbai-0-to-3-yrs-jobid-UfNdMUzcLx5zpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 12,
+    'Title': 'Dveloppeur JavaScript',
+    'Company': 'CGI Information Systems and Management Consultants Pvt Ltd',
+    'Skills': 'software development, system design, quality assurance, client needs analysis, technology implementation, javascript',
+    'Link': 'https://www.timesjobs.com/job-detail/dveloppeur-javascript-cgi-information-systems-and-management-consultants-pvt-ltd-canada-3-to-5-yrs-jobid-zH4lgDsmAtxzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 14,
+    'Title': 'Javascript  /  Jquery Developer',
+    'Company': 'Mapps IT Services Pvt Ltd',
+    'Skills': 'html, javascript, jquery, dotnet',
+    'Link': 'https://www.timesjobs.com/job-detail/javascript-jquery-developer-mapps-it-services-pvt-ltd-kolkata-3-to-6-yrs-jobid-WbTV__PLUS__VeurNRzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 17,
+    'Title': 'Front End Javascript Developer',
+    'Company': 'Exioms',
+    'Skills': 'css, ember.js, javascript, react.js, html',
+    'Link': 'https://www.timesjobs.com/job-detail/front-end-javascript-developer-exioms-pune-2-to-5-yrs-jobid-4eUD2Oz0ZZNzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 18,
+    'Title': 'Senior Javascript Developer',
+    'Company': 'LAKSH HUMAN RESOURCE',
+    'Skills': 'rest, css, javascript, jquery, javascript developer, html, software engineering, angularjs',
+    'Link': 'https://www.timesjobs.com/job-detail/senior-javascript-developer-laksh-human-resource-navi-mumbai-mumbai-1-to-3-yrs-jobid-__PLUS____SLASH____PLUS__XFjMnzdVzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 21,
+    'Title': 'Software Developer- JavaScript Technologies',
+    'Company': 'Bayatree Infocom',
+    'Skills': 'css, backbone.js, html, mysql, javascript',
+    'Link': 'https://www.timesjobs.com/job-detail/software-developer-javascript-technologies-bayatree-infocom-mohali-3-to-6-yrs-jobid-1Jg8HfGsOdRzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 23,
+    'Title': 'Dveloppeur servicenow / javascript',
+    'Company': 'CGI Information Systems and Management Consultants Pvt Ltd',
+    'Skills': 'servicenow development, javascript proficiency, platform knowledge, software engineering, problem solving',
+    'Link': 'https://www.timesjobs.com/job-detail/dveloppeur-servicenow-javascript-cgi-information-systems-and-management-consultants-pvt-ltd-canada-2-to-5-yrs-jobid-06Gsi2LtzldzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 24,
+    'Title': 'Web Developer  ( HTML / JavaScript )',
+    'Company': 'GotPrint',
+    'Skills': 'css, jquery, java, html, problem solving, svn, javascript, technical consultant',
+    'Link': 'https://www.timesjobs.com/job-detail/web-developer-html-javascript-gotprint-2-to-5-yrs-jobid-vw3u__SLASH__ZJox3FzpSvf__PLUS__uAgZw==&source=srp'
+  },
+  {
+    'Job Number': 25,
+    'Title': 'Javascript / UI Ninja',
+    'Company': 'Tradeboox',
+    'Skills': 'css, html5, bootstrap, javascript, jquery, node.js, backbone.js, web developer, html, software developer, technical skills, angularjs, content management system',
+    'Link': 'https://www.timesjobs.com/job-detail/javascript-ui-ninja-tradeboox-delhi-delhi-ncr-2-to-5-yrs-jobid-fDbfa7Ep75dzpSvf__PLUS__uAgZw==&source=srp'
+  },
+]
