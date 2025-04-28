@@ -1,150 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 /* Body */
 body {
-  display: flex;
-  background: #000;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Header */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  color:transparent;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 10;
-}
-
-/* Water Wave Text Animation */
-.content {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.error-message {
-  color: red;
-  font-size: 0.85rem;
-  margin-top: 4px;
-  margin-bottom: 6px;
-}
-
-.wave-text {
-  font-size: 6em;
-  font-weight: 700;
-  text-transform: uppercase;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ddc5c5; /* Ensuring text is fully visible */
-}
-
-/* Outlined Text */
-.content h2:nth-child(1) {
-  position: absolute;
-  color: transparent;
-  -webkit-text-stroke: 2px #eee5e5; /* Blue outline */
-}
-
-/* Wave Overlay */
-.content h2:nth-child(2) {
-  position: absolute;
-  color: #ffffff;
-  overflow: hidden;
-  animation: wave-animation 3s infinite ease-in-out alternate;
-}
-
-
-
-/* Water Wave Effect */
-@keyframes wave-animation {
-  0% {
-    clip-path: polygon(
-      0% 45%,
-      16% 44%,
-      33% 50%,
-      54% 60%,
-      70% 61%,
-      84% 59%,
-      100% 52%,
-      100% 100%,
-      0% 100%
-    );
-  }
-
-  50% {
-    clip-path: polygon(
-      0% 60%,
-      15% 65%,
-      34% 66%,
-      51% 62%,
-      67% 50%,
-      84% 45%,
-      100% 46%,
-      100% 100%,
-      0% 100%
-    );
-  }
-
-  100% {
-    clip-path: polygon(
-      0% 50%,
-      16% 52%,
-      33% 60%,
-      54% 70%,
-      70% 72%,
-      84% 68%,
-      100% 62%,
-      100% 100%,
-      0% 100%
-    );
-  }
-}
-
-
-/* Footer */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  color: #ada6a6;
-  padding: 10px 0;
-}
-
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Exo', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(to bottom, #963656, #000000);
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
   color: #f1f1f1;
   padding: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Header */
@@ -157,9 +31,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  color: white;
   background: rgba(0, 0, 0, 0.3);
   z-index: 10;
+  color: white;
 }
 
 .logo {
@@ -172,6 +46,7 @@ body {
   height: 55px;
   margin-right: 10px;
 }
+
 .menu-container {
   position: relative;
 }
@@ -210,35 +85,14 @@ body {
   background: #eacdcd;
 }
 
-
-
-/* HEXAHUNT - Static Header */
+/* Static Header Title */
 .header h1 {
   font-size: 28px;
   font-weight: bold;
-  color: white;
   margin: 0;
 }
 
-/* Remove cursor animation */
-.cursor {
-  font-size: 30px;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  margin: 0;
-  border-right: 2px solid white;
-  position: absolute;
-  left: 20px; /* Keep it fixed on the left */
-  top: 50%; /* Center it vertically */
-  transform: translateY(-50%);
-  width: fit-content; /* Ensure text remains in place */
-  max-width: 100%; /* Prevent overflow */
-  animation: typing 3s steps(20, end) forwards, blink 0.7s infinite;
-}
-
-
-/* Animated Circles (Background) */
+/* Circles Background Animation */
 .circles {
   position: absolute;
   top: 0;
@@ -246,16 +100,16 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 0;
 }
 
 .circles li {
   position: absolute;
   list-style: none;
-  width: 20px;
-  height: 20px;
   background: rgba(255, 255, 255, 0.2);
-  animation: animate 25s linear infinite;
   bottom: -150px;
+  animation: animate 25s linear infinite;
+  border-radius: 50%;
 }
 
 .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; }
@@ -275,32 +129,62 @@ body {
 }
 
 /* Main Content */
-.content-container {
+.content {
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 60px 20px;
+  justify-content: center;
   z-index: 1;
 }
 
-/* Left Section (Text) */
-.text-content {
-  max-width: 70%;
+.wave-text {
+  font-size: 6em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.text-content h1 {
-  font-size: 36px;
-  color: #fff;
-  margin-bottom: 20px;
+.content h2:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px #eee5e5;
 }
 
-.text-content p {
-  font-size: 18px;
-  color: #fff;
-  margin-bottom: 30px;
+.content h2:nth-child(2) {
+  color: #ffffff;
+  overflow: hidden;
+  animation: wave-animation 3s infinite ease-in-out alternate;
 }
 
-/* Right Section (Form) */
+@keyframes wave-animation {
+  0% {
+    clip-path: polygon(
+      0% 45%, 16% 44%, 33% 50%, 54% 60%,
+      70% 61%, 84% 59%, 100% 52%,
+      100% 100%, 0% 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0% 60%, 15% 65%, 34% 66%, 51% 62%,
+      67% 50%, 84% 45%, 100% 46%,
+      100% 100%, 0% 100%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      0% 50%, 16% 52%, 33% 60%, 54% 70%,
+      70% 72%, 84% 68%, 100% 62%,
+      100% 100%, 0% 100%
+    );
+  }
+}
+
+/* Form Container */
 .form-container {
   position: fixed;
   top: 100px;
@@ -308,11 +192,11 @@ body {
   background: linear-gradient(to bottom, #000000, #000000);
   padding: 60px;
   border-radius: 12px;
-  margin-top:40px;
+  margin-top: 40px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
   max-width: 400px;
-  z-index: 0;
+  z-index: 2;
 }
 
 .form-container h3 {
@@ -326,12 +210,12 @@ body {
   border: 2px dashed #4e54c8;
   border-radius: 8px;
   padding: 10px 20px;
-  cursor: pointer;
   background: rgba(78, 84, 200, 0.05);
   display: flex;
   align-items: center;
   justify-content: flex-start;
   transition: background 0.3s ease;
+  cursor: pointer;
 }
 
 .upload-box:hover {
@@ -390,37 +274,36 @@ body {
 .submit-btn:hover {
   background-color: #691d3e;
 }
+
 /* Typewriter Effect */
 .cursor {
+  font-family: 'Exo', sans-serif;
   font-size: 30px;
-  text-align: left;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0 auto;
   border-right: 2px solid white;
   width: 0;
-  animation: typing 5s steps(30, end) infinite; /* Adjusted the duration and steps */
+  animation: typing 5s steps(30, end) infinite alternate, blink 0.7s infinite;
 }
 
-/* Typing Effect */
 @keyframes typing {
   from { width: 0; }
   to { width: 37%; }
 }
 
-/* Blinking Cursor */
 @keyframes blink {
   50% { border-color: transparent; }
 }
+
+/* Help Link */
 .link-container {
-  margin-top: 15px; /* Adjust this value to move the link down */
+  margin-top: 15px;
   display: flex;
-  justify-content: center; /* Center it if needed */
+  justify-content: center;
 }
 
 .help-link {
-
-  color: #bc808c; /* Change to a bright, visible color */
+  color: #bc808c;
   font-weight: bold;
   text-decoration: none;
   display: inline-block;
@@ -428,10 +311,45 @@ body {
 }
 
 .help-link:hover {
-  color: #e84873; /* Slightly darker shade on hover */
+  color: #e84873;
   text-decoration: underline;
 }
+.content-container {
+  display: flex;
+  align-items: center;     
+  height: 100vh;   
+  margin-top: -200;
+  text-align: center;      
+}
+.job-validation-wrapper {
+  position: relative;
+}
 
+.job-input-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  padding-right: 2rem; /* space for the icon */
+}
+
+.validation-icon {
+  position: absolute;
+  right: 10px;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+.input-valid {
+  border: 1px solid green;
+}
 
 /* Footer */
 .footer {
@@ -442,4 +360,5 @@ body {
   text-align: center;
   color: #ada6a6;
   padding: 10px 0;
+  background: rgba(0, 0, 0, 0.3);
 }

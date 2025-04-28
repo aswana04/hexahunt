@@ -22,7 +22,6 @@ const Form: React.FC = () => {
     const value = e.target.value;
     setLocation(value);
 
-    // Clear error when a valid location is selected
     if (value) {
       setErrors((prev) => ({ ...prev, location: "" }));
     }
@@ -32,8 +31,13 @@ const Form: React.FC = () => {
     const value = e.target.value;
     setJob(value);
 
-    if (value && !/^[a-zA-Z\s]*$/.test(value)) {
-      setErrors((prev) => ({ ...prev, job: "Only letters are allowed." }));
+    const trimmed = value.trim();
+
+    if (!/^[a-zA-Z\s]*$/.test(trimmed)) {
+      setErrors((prev) => ({
+        ...prev,
+        job: "Only letters and spaces are allowed. No numbers or symbols.",
+      }));
     } else {
       setErrors((prev) => ({ ...prev, job: "" }));
     }
@@ -51,6 +55,14 @@ const Form: React.FC = () => {
 
     if (!resume) {
       setErrors((prev) => ({ ...prev, resume: "Please upload your resume." }));
+      return;
+    }
+
+    if (job && !/^[a-zA-Z\s]*$/.test(job.trim())) {
+      setErrors((prev) => ({
+        ...prev,
+        job: "",
+      }));
       return;
     }
 
@@ -222,16 +234,23 @@ const Form: React.FC = () => {
             </div>
 
             {/* Job Expectations Input */}
-            <div className="input-field-container">
+            <div className="input-field-container job-validation-wrapper">
               <label htmlFor="job">Job Expectations (optional):</label>
-              <input
-                type="text"
-                id="job"
-                className="input-field"
-                value={job}
-                onChange={handleJobChange}
-                placeholder="Enter your expected job"
-              />
+              <div className="job-input-icon-container">
+                <input
+                  type="text"
+                  id="job"
+                  className={`input-field ${errors.job ? "input-error" : job.trim() ? "input-valid" : ""}`}
+                  value={job}
+                  onChange={handleJobChange}
+                  placeholder="Enter your expected job"
+                />
+                {job.trim() && (
+                  <span className="validation-icon">
+                    {errors.job ? "❌" : "✅"}
+                  </span>
+                )}
+              </div>
               {errors.job && <p className="error-message">{errors.job}</p>}
             </div>
 

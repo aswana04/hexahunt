@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import "./job.css";
+import { FaRegSadTear } from "react-icons/fa";  // Cute sad icon
 
 interface Job {
   title: string;
   company?: string;
   location?: string;
-  skills?: string[];
-  link?: string; // <-- Added link inside Job
+  skills?: string[]; // still in the state, just hidden from UI
+  link?: string;
 }
 
 const Job = () => {
@@ -28,7 +29,7 @@ const Job = () => {
       skills: typeof item.Skills === "string"
         ? item.Skills.split(",").map((s: string) => s.trim())
         : [],
-      link: item.Link || "", // <-- Extract link from each job
+      link: item.Link || "",
     }));
 
     setJobs(
@@ -58,27 +59,27 @@ const Job = () => {
 
       <main className="job-list">
         {jobs.length === 0 ? (
-          <p className="no-jobs">No matching jobs found.</p>
+          <div className="no-jobs-container">
+            <FaRegSadTear size={50} color="#ff6347" />
+            <p className="no-jobs">Oops! No matching jobs found, but don’t worry — new opportunities are just around the corner!</p>
+          </div>
         ) : (
           jobs.map((job, index) => (
             <div className="job-card" key={index}>
               <h2>{job.title}</h2>
               <p className="company">{job.company}</p>
               <p className="location">{job.location}</p>
-              <p className="skills">
-                <strong>Skills:</strong>{" "}
-                {Array.isArray(job.skills) && job.skills.length > 0
-                  ? job.skills.join(", ")
-                  : "Not specified"}
-              </p>
-              {/* NEW: Display link if available */}
-              {job.link && (
-        <p className="link">
-          <strong>Link:</strong>{" "}
-        <a href={job.link} target="_blank" rel="noopener noreferrer"><strong>Apply Now</strong></a>
-        </p>
-        )}
 
+              {/* Removed the Skills section from the UI */}
+
+              {job.link && (
+                <p className="link">
+                  <strong>Link:</strong>{" "}
+                  <a href={job.link} target="_blank" rel="noopener noreferrer">
+                    <strong>Apply Now</strong>
+                  </a>
+                </p>
+              )}
             </div>
           ))
         )}

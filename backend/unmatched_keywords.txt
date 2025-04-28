@@ -1,3 +1,5 @@
+python
+javascript
 react
 node.js
 c++

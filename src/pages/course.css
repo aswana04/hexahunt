@@ -72,40 +72,43 @@ body, html {
 
 /* Course list and course cards */
 .course-list {
-  height: 100%; /* Adjust height to fit under the fixed header and padding */
+  height: calc(100vh - 120px);  /* Adjust height to fit under the fixed header and padding */
   overflow-y: auto;            /* Enable vertical scroll */
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 90%;  /* Full width for the course list */
+  width: 100%;  /* Full width for the course list */
   margin-top: 10px;
-  padding-bottom: 40px;
-  padding-top: 80px; /* To account for the header */
+  padding-top: 60px; /* To account for the header */
+  padding-bottom: 60px; /* Space below to match other content */
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent background to blend with page */
+  border-radius: 15px;  /* Smooth rounded corners */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);  /* Subtle shadow to create depth */
 }
 
 /* Course card styles */
 .course-card {
-  background-color: #161616;
+  background-color: rgba(22, 22, 22, 0.8);  /* Semi-transparent background */
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
-  max-width: 1100px;  /* Increase width of course cards */
   width: 100%;
-  opacity: 0.9;  /* Slight opacity for depth */
+  opacity: 1;  /* No opacity effect for a cleaner look */
+  backdrop-filter: blur(10px);  /* Adding a blur effect to make the content behind look blurred */
 }
 
 .course-card:hover {
-  transform: translateY(-15px);  /* Add hover animation */
+  transform: translateY(-10px);  /* Hover effect for better user interaction */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  background-color: #5a5a5a;
-  opacity: 1;
+  background-color: rgba(90, 90, 90, 0.8); /* Slightly lighter hover color */
 }
 
+/* Course card title */
 .course-card h2 {
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 10px;
   transition: color 0.3s ease-in-out;
 }
@@ -117,13 +120,13 @@ body, html {
 .provider {
   color: #f1f1f1;
   font-size: 1.2rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .location {
   color: #B62A5E;
   font-size: 1.1rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .skills {
@@ -131,62 +134,57 @@ body, html {
   font-size: 1.1rem;
   margin-bottom: 15px;
 }
-.website-button {
-  position: relative; /* Ensure it stays above overlapping elements */
-  z-index: 5;
-  background: linear-gradient(to right, #b62a5e, #e0447c);
-  color: rgb(74, 26, 26);
+
+/* Apply Now Button Container */
+.apply-now-btn-container {
+  margin-top: 30px;  /* Spacing between course list and button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Apply Now Button Style */
+.apply-now-btn {
+  background-color:  #B62A5E;  /* Button background color */
+  color: #fff;  /* White text */
   border: none;
-  padding: 10px 24px;
-  font-size: 1.3rem;
-  border-radius: 20px;
+  padding: 8px 18px; /* Reduced padding */
+  font-size: 1.1rem; /* Reduced font size */
+  border-radius: 30px;  /* Rounded corners */
   cursor: pointer;
-  transition: all 0.4s ease;
-  margin-top: 30px;
-  margin-bottom: 1px;
+  margin-top: 20px; /* Adjust the margin as needed */
+  transition: all 0.3s ease;
   text-align: center;
   font-weight: bold;
-  letter-spacing: 1.2px;
-  box-shadow: 0 6px 15px rgba(182, 42, 94, 0.6);
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(255, 111, 97, 0.4);
 }
 
-.website-button:hover {
-  background: linear-gradient(to right, #e0447c, #b62a5e);
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(182, 42, 94, 0.9);
+.apply-now-btn:hover {
+  background-color: #78453c;  /* Darker shade on hover */
+  box-shadow: 0 12px 30px rgba(255, 111, 97, 0.6);  /* Increased shadow on hover */
 }
 
-.website-button:focus {
+.apply-now-btn:focus {
   outline: none;
-  border: 2px solid #F1A6B7;
-  box-shadow: 0 0 16px rgba(182, 42, 94, 0.6);
+  border: 2px solid #78453c;  /* Outline color on focus */
+  box-shadow: 0 0 16px rgba(255, 87, 51, 0.6);  /* Focused shadow */
 }
 
-.website-button:active {
-  transform: scale(0.97);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.apply-now-btn:active {
+  transform: scale(0.98);  /* Slight shrink effect on click */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.website-button span {
-  display: inline-block;
-  transition: opacity 0.2s ease-in-out;
-  color: inherit; /* Ensures no white overlay */
-  background: none;
-}
-
-.website-button:hover span {
-  opacity: 0.9;  /* Slight opacity change on hover */
-}
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-  .website-button {
-    width: 100%;  /* Full-width on smaller screens */
+  .apply-now-btn {
+    width: 100%;  /* Full-width button on smaller screens */
     padding: 16px;
-    font-size: 1.1rem;  /* Smaller font size on mobile */
+    font-size: 1.2rem;  /* Smaller font size */
   }
 }
-
 
 /* Responsive Design */
 @media (max-width: 1024px) {

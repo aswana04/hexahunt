@@ -15,19 +15,19 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import LancasterStemmer, WordNetLemmatizer
 
-# Flask setup
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Ensure NLTK resources are downloaded
+
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
-# ---------- PDF Text Extraction ---------- 
+
 def extract_text_from_pdf(pdf_path):
     text = ""
     with fitz.open(pdf_path) as doc:
@@ -35,7 +35,7 @@ def extract_text_from_pdf(pdf_path):
             text += page.get_text()
     return text
 
-# ---------- Normalization Functions ---------- 
+
 def remove_non_ascii(words):
     return [unicodedata.normalize('NFKD', word).encode('ascii', 'ignore').decode('utf-8', 'ignore') for word in words]
 
@@ -70,51 +70,56 @@ def normalize(words):
     words = lemmatize_verbs(words)
     return words
 
-# ---------- Main Pipeline ---------- 
+
 def parse_resume(pdf_path):
-    # Extract text from PDF
     raw_text = extract_text_from_pdf(pdf_path)
     
-    # Tokenize the extracted text into words
     tokenized_words = word_tokenize(raw_text)
     
-    # Normalize the tokenized words (removes punctuation, stopwords, converts to lowercase, etc.)
     normalized_words = normalize(tokenized_words)
     
     return normalized_words
 
 
 search_terms = [
-    "python", "flask", "django", "react", "node.js", "machine learning",
-    "sql", "mongodb", "aws", "docker", "kubernetes", "java", "c++", "html",
-    "css", "javascript", "linux", "git", "rest api", "graphql", "ai",
-    "cloud computing", "dsa", "devops", "angular", "vue.js", "swift", "ruby", "php",
-    "tensorflow", "pytorch", "jupyter", "big data", "hadoop", "scala",
-    "apache spark", "nlp", "data science", "deep learning", "reinforcement learning", "internet of things",
-    "xgboost", "keras", "scikit-learn", "opencv", "computer vision", "tableau",
-    "power bi", "sql server", "nosql", "etl", "fastapi", "jupyter notebook", 
-    "google colab", "eclipse ide", "latex", "ms office", "c", "cyber security", "iot", "graphic design",
-    "go", "typescript", "rust", "bootstrap", "tailwind css", "next.js", "express.js",
-    "jenkins", "github actions", "firebase", "oracle", "redis",
-    "jest", "selenium", "postman", "api testing", "unit testing",
-    "vscode", "intellij idea", "jira", "notion",
-    "figma", "ui/ux design", "system design", "agile", "scrum"
+    "agile", "ai", "angular", "apache spark", "api testing", "aws",
+    "beamer", "binary tree", "binary tree construction", "big data",
+    "bitnami wamp & wapp servers", "bootstrap", "c", "c++", "cloud computing",
+    "compiler design", "computer graphics", "computer vision", "construct binary tree from string",
+    "css", "cyber security", "data science", "data structures & algorithm",
+    "deep learning", "devops", "dicom viewer", "discrete mathematics",
+    "docker", "dsa", "eclipse ide", "engineering mathematics", "etl",
+    "express.js", "fastapi", "figma", "firebase", "flask", "git",
+    "github actions", "go", "google colab", "graph theory", "graphql",
+    "graphic design", "hadoop", "html", "image processing", "intellij idea",
+    "internet of things", "iot", "java", "jenkins", "jest", "jira",
+    "jupyter", "jupyter notebook", "keras", "kubernetes", "latex",
+    "latex editor", "linux", "machine learning", "mathematical logic",
+    "microprocessor based design", "mongodb", "ms office", "mysql",
+    "next.js", "nlp", "node.js", "nosql", "notion", "object oriented programming",
+    "opencv", "operating system", "oracle", "parsing parenthesis", "php",
+    "postman", "power bi", "postgresql", "python", "rdbms", "react",
+    "redis", "reinforcement learning", "rest api", "root value", "rust",
+    "scala", "scikit-learn", "scrum", "selenium", "set theory", "shell programming",
+    "sql", "sql server", "swift", "system design", "tableau", "tailwind css",
+    "tensorflow", "theory of computations", "tree from string", "tree parsing",
+    "tree traversal", "typescript", "ui/ux design", "unit testing", "vscode",
+    "vue.js"
 ]
+
 
 blacklist = {
     'developer', 'development', 'technical', 'skills', 'software',
     'web', 'mobile', 'system', 'content', 'management', 'platform',
     'design', 'engineering', 'analysis', 'consultant', 'client', 'needs',
-    'assurance', 'technology', 'implementation', 'problem', 'solving',
+    'assurance', 'technology', 'implementation',
     'knowledge', 'proficiency'
 }
 
-# Define your search_terms (list of keywords or skills)
 search_terms_v2 = [
     "python", "javascript", "html", "css", "react", "node.js", "c++", "java", "sql", "aws", "machine learning", "docker", "kubernetes"
 ]
 
-# Clean skills and remove blacklisted terms
 def clean_skills(raw_skills):
     skills = re.split(r'[,\n\t\r]+|\s{2,}', raw_skills.strip().lower())
     filtered = [skill.strip() for skill in skills if skill and skill not in blacklist]
@@ -126,13 +131,13 @@ def clean_skills(raw_skills):
             unique_skills.append(skill)
     return ', '.join(unique_skills)
 
-# Web scraping job fetch
-def fetch_jobs_for_cities(cities, pages_to_scrape=5):
+
+def fetch_jobs_for_cities(cities, pages_to_scrape=3):
     """Fetch jobs for specific cities."""
     base_url = 'https://www.timesjobs.com/candidate/job-search.html?from=submit&luceneResultSize=25&postWeek=60&searchType=Home_Search&cboPresFuncArea=35&pDate=Y&sequence=2&startPage='
     
-    jobs_data = []  # Store all jobs data
-    job_counter = 1  # For unique job numbering
+    jobs_data = [] 
+    job_counter = 1 
 
     for city in cities:
         print(f"Fetching jobs for {city}...")
@@ -141,7 +146,7 @@ def fetch_jobs_for_cities(cities, pages_to_scrape=5):
             url = f"{base_url}{page}&txtLocation={city}"
             try:
                 response = requests.get(url)
-                response.raise_for_status()  # Check if the request was successful
+                response.raise_for_status() 
             except requests.exceptions.RequestException as e:
                 print(f"Failed to fetch page {page} for {city}: {e}")
                 continue
@@ -167,7 +172,7 @@ def fetch_jobs_for_cities(cities, pages_to_scrape=5):
 
                 link = job.header.h2.a['href'] if job.header and job.header.h2 and job.header.h2.a else 'N/A'
 
-                # Extract location
+                
                 location = 'N/A'
                 location_tag = job.find('ul', class_='top-jd-dtl mt-16 clearfix')
                 if location_tag:
@@ -178,7 +183,7 @@ def fetch_jobs_for_cities(cities, pages_to_scrape=5):
                         else:
                             location = location_li.text.strip()
 
-                # Store job data
+                
                 job_data = {
                     'Job Number': job_counter,
                     'City': city,
@@ -194,13 +199,11 @@ def fetch_jobs_for_cities(cities, pages_to_scrape=5):
 
     return jobs_data
 
-# Web scraping endpoint to fetch jobs
+
 @app.route('/fetch_jobs', methods=['GET'])
 def fetch_jobs():
     cities = ['calicut', 'mumbai', 'bangalore', 'chennai', 'hyderabad', 'kochi', 'trivandrum']
-    jobs_data = fetch_jobs_for_cities(cities, pages_to_scrape=5)  # ⬅️ Scrape 5 pages (around 125 jobs)
-    
-    # Save jobs to a JSON file
+    jobs_data = fetch_jobs_for_cities(cities, pages_to_scrape=3) 
     os.makedirs('javascript_jobs', exist_ok=True)
     with open(os.path.join('javascript_jobs', 'javascript_jobs.json'), 'w', encoding='utf-8') as f:
         json.dump(jobs_data, f, indent=4, ensure_ascii=False)
@@ -210,11 +213,11 @@ def fetch_jobs():
 
 CSV_FILE_PATH = r"C:\Users\aswan\OneDrive\Desktop\project\hexa\backend\jobs_data.csv"
 
-# Function to load job data from the CSV file
+
 def load_job_data_from_csv():
     job_list = []
     try:
-        # Read the CSV file using pandas
+       
         df = pd.read_csv(CSV_FILE_PATH)
         for _, row in df.iterrows():
             job_list.append({
@@ -230,11 +233,11 @@ def load_job_data_from_csv():
 
 @app.route('/fetch_job_list', methods=['GET'])
 def get_job_list():
-    # Fetch the current page number from query parameters
-    page = int(request.args.get('page', 1))  # Default to page 1 if no page parameter is provided
-    jobs_per_page = 10  # Define how many jobs to fetch per page
+   
+    page = int(request.args.get('page', 1))  
+    jobs_per_page = 10 
 
-    # Load the job data from the CSV file
+
     job_list = load_job_data_from_csv()
 
     # Implement pagination
@@ -330,6 +333,7 @@ def upload_resume():
     resume = request.files['resume']
     location = request.form.get('location', '')
     salary = request.form.get('salary', '')
+    expected_job = request.form.get('expected_job', '')  # <-- Get expected job title from frontend
 
     if resume.filename == '':
         return jsonify({"success": False, "message": "Empty file name"}), 400
@@ -341,6 +345,7 @@ def upload_resume():
     print(f"Resume saved at: {filepath}")
     print("Location:", location)
     print("Job Expectation (salary):", salary)
+    print("Expected Job Title:", expected_job)
 
     try:
         if filepath.lower().endswith('.pdf'):
@@ -355,18 +360,21 @@ def upload_resume():
         found_keywords = [term for term in search_terms if term.lower() in normalized_text.lower()]
         print("Found Keywords from Resume:", found_keywords)
 
-        # Fetch job data for all cities
         jobs_data = fetch_jobs_for_cities([
              'calicut', 'mumbai', 'bangalore', 'chennai', 'hyderabad', 'kochi', 'trivandrum'
         ])
 
         matching_jobs = []
-        seen_job_titles = set()  # To keep track of unique job titles
+        seen_job_titles = set()
 
         for job in jobs_data:
-            # Check if location is specified and filter jobs based on location
+            # Filter by location if provided
             if location and location.lower() not in job['Location'].lower():
-                continue  # Skip this job if location doesn't match
+                continue
+            
+            # Filter by expected job title if provided
+            if expected_job and expected_job.lower() not in job['Title'].lower():
+                continue
 
             job_skills = [js.lower() for js in job['Skills'].split(', ')]
             match_count = 0
@@ -377,18 +385,15 @@ def upload_resume():
                     match_count += 1
                     matched_skills.append(keyword)
 
-            # 🛑 Only accept jobs with 4 or more matching skills
             if match_count >= 2:
                 job_copy = job.copy()
                 job_copy["match_count"] = match_count
                 job_copy["matched_skills"] = matched_skills
 
-                # Check if the job title has already been added
                 if job_copy["Title"].lower() not in seen_job_titles:
                     matching_jobs.append(job_copy)
                     seen_job_titles.add(job_copy["Title"].lower())
 
-        # Sort the matching jobs by match count in descending order
         matching_jobs.sort(key=lambda x: x["match_count"], reverse=True)
 
         return jsonify({

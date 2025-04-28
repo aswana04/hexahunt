@@ -24,9 +24,10 @@ const Course = () => {
     navigate("/form"); // Navigates to the form page
   };
 
-  const handleWebsiteClick = () => {
-    window.open("https://hexcent.in/course.html", "_blank"); // Opens the website in a new tab
+  const handleApplyClick = () => {
+    window.open("https://hexcent.in/course.html", "_blank"); // Opens the URL in a new tab
   };
+  
 
   return (
     <div className="app-container">
@@ -61,14 +62,15 @@ const Course = () => {
             <h2>{course.keyword}</h2> {/* Replaced title with keyword */}
             <p className="provider">{course.provider}</p>
             <p className="location">{course.location}</p>
-            {/* Removed the skills part */}
-      
           </div>
         ))}
       </main>
 
-      <div className="website-button">
-        <button onClick={handleWebsiteClick} className="go-to-website-btn">Go to Website</button>
+      {/* Apply Now Button */}
+      <div className="apply-now-btn-container">
+        <button className="apply-now-btn" onClick={handleApplyClick}>
+          Apply Now
+        </button>
       </div>
     </div>
   );

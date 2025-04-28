@@ -144,7 +144,69 @@ body, html {
   .app-container {
     flex-direction: column;  /* Stack the content on top of each other */
   }
-
+  .no-jobs-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .no-jobs-container p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  
+  .no-jobs-container .no-jobs {
+    color: #555;
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+  
+  .no-jobs-container svg {
+    margin-bottom: 10px;
+  }
+  
+  .app-container {
+    background-color: #fafafa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .job-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+  }
+  
+  .app-header h1 {
+    margin: 0;
+  }
+  
+  .back-icon {
+    cursor: pointer;
+  }
+  
   .fixed-sidebar {
     position: static; /* Remove the fixed position on smaller screens */
     width: 100%;  /* Full width on smaller screens */
