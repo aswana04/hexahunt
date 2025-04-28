@@ -1,0 +1,75 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+# ✅ Automatically set up WebDriver
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+# ✅ Base URL (Page number will be replaced dynamically)
+base_url = "https://www.foundit.in/srp/results?start={}&sort=1&limit=15&query=Software+Engineer&queryDerived=true"
+
+# ✅ Open the first page to determine the total number of jobs
+driver.get(base_url.format(0))
+time.sleep(5)  # Allow page to load
+
+# ✅ Find total number of jobs (Update the class if necessary)
+try:
+    total_jobs_text = driver.find_element(By.CLASS_NAME, "job-count-class").text  # Update with the correct class
+    total_jobs = int(''.join(filter(str.isdigit, total_jobs_text)))  # Extract numbers only
+except:
+    print("Could not retrieve total job count. Scraping 10 pages by default.")
+    total_jobs = 150  # Fallback to 10 pages (assuming 15 jobs per page)
+
+# ✅ Calculate total pages
+jobs_per_page = 15
+total_pages = (total_jobs // jobs_per_page) * jobs_per_page
+
+print(f"Scraping approximately {total_jobs} jobs from {total_pages // jobs_per_page} pages...")
+
+# ✅ Loop through all pages dynamically
+for page in range(0, total_pages, 15):  
+    driver.get(base_url.format(page))
+    time.sleep(5)  # Allow page to load
+
+    # ✅ Extract job listings
+    job_titles = driver.find_elements(By.CLASS_NAME, "jobTitle")
+    company_names = driver.find_elements(By.CLASS_NAME, "companyName")
+    locations = driver.find_elements(By.XPATH, "//div[contains(@class, 'details location')]")
+    salaries = driver.find_elements(By.XPATH, "//span[contains(@class, 'salary-class-name')]")  # Update class name
+
+    # ✅ Print job details
+    for i in range(len(job_titles)):
+        job_title = job_titles[i].text.strip() if i < len(job_titles) else "Not Available"
+        company_name = company_names[i].text.strip() if i < len(company_names) else "Not Available"
+        job_location = locations[i].text.strip() if i < len(locations) and locations[i].text else "Not mentioned"
+        job_salary = salaries[i].text.strip() if i < len(salaries) and salaries[i].text else "Not mentioned"
+
+        print(f"Title: {job_title}\nCompany: {company_name}\nLocation: {job_location}\nSalary: {job_salary}\n")
+
+# ✅ Close the browser
+driver.quit()
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
