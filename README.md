@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+Hexa-Hunt is a full-stack AI-based job recommendation system that uses machine learning and web-scraped job data to provide personalized job suggestions based on user skills, resumes, and interests. The platform focuses on intelligent matching, real-time job retrieval, and user-friendly interaction.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
